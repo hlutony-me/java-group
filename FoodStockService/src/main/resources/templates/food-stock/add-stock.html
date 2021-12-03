@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+    width:200px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.container{
+margin: auto;
+width: 980px;
+text-align: center;
+}
+</style>
+<body>
+<div class="container">
+
+  <h3>Add Food Stock</h3>
+
+  <div class="card">
+    <form action="#" th:action="@{/food-stock/add}" th:object="${foodStock}" method="post">
+
+      <label for="foodGroup">Food Group</label>
+      <input type="text" th:field="*{foodGroup}" id="foodGroup" placeholder="Food Group">
+      </br>
+      <span th:if="${#fields.hasErrors('foodGroup')}" th:errors="*{foodGroup}"></span>
+      </br>
+
+      <label for="quantity">Food Quantity</label>
+      <input type="text" th:field="*{quantity}" id="quantity" placeholder="Food Quantity">
+      </br>
+      <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
+      </br>
+
+      <label for="bestBefore">Best Before</label>
+      <input type="text" th:field="*{bestBefore}" id="bestBefore" placeholder="Best Before">
+      </br>
+      <span th:if="${#fields.hasErrors('bestBefore')}" th:errors="*{bestBefore}"></span>
+      </br>
+
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

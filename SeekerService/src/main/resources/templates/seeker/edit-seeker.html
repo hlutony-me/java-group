@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+    width:200px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.container{
+margin: auto;
+width: 980px;
+text-align: center;
+}
+</style>
+<body>
+<div class="container">
+  <h3>Edit Seeker</h3>
+
+  <div class="card">
+    <form action="#" th:action="@{/seeker/update/{id}(id=${seeker.id})}" th:object="${seeker}" method="post">
+      <label for="id">Seeker id</label>
+      <input type="text" th:field="*{id}" id="id" placeholder="seeker id">
+      <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+      </br>
+      <label for="firstName">FirstName</label>
+      <input type="text" th:field="*{firstName}" id="firstName" placeholder="firstName">
+      <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+      </br>
+
+      <label for="lastName">LastName</label>
+      <input type="text" th:field="*{lastName}" id="lastName" placeholder="lastName">
+      <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+      </br>
+      <label for="age">Age</label>
+      <input type="number" th:field="*{age}" id="age" placeholder="age">
+      <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+      </br>
+
+      <label for="gender">Gender</label>
+      <input type="text" th:field="*{gender}" id="gender" placeholder="gender">
+      <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
+      </br>
+      <label for="firstName">City</label>
+      <input type="text" th:field="*{city}" id="city" placeholder="city">
+      <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+      </br>
+
+      <label for="phone">Phone</label>
+      <input type="text" th:field="*{phone}" id="phone" placeholder="phone">
+      <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+      </br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div>
+
+  </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock List</title>
+  <style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+a{
+text-decoration:none;
+}
+.submit{
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration:none;
+}
+.button :hover {
+  background-color: #45a049;
+}
+.button {
+    width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+    width:200px;
+}
+.container{
+margin: auto;
+width: 980px;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Seeker List</h1>
+
+  <div th:if="${not #lists.isEmpty(seekers)}">
+    <table id="customers">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Phone</th>
+
+        <th></th>
+        <th></th>
+      </tr>
+
+      <tr th:each="dept:${seekers}">
+        <td th:text="${dept.firstName}">First Name</td>
+        <td th:text="${dept.lastName}">Last Name</td>
+        <td th:text="${dept.age}">Age</td>
+        <td th:text="${dept.gender}">gender</td>
+        <td th:text="${dept.city}">city</td>
+        <td th:text="${dept.phone}">Phone</td>
+
+
+        <td><a th:href="@{/seeker/edit/{id}(id=${dept.id})}"><button class="button">Update</button></a></td>
+        <td><a th:href="@{/seeker/delete/{id}(id=${dept.id})}"><button class="button">Delete</button></a></td>
+      </tr>
+
+
+
+    </table>
+  </div>
+
+  <div>
+
+    <a th:href="@{/seeker/add-page}" >  <button class="button">Add Seeker</button></a>
+  </div>
+
+
+</div>
+
+</body>
+</html>
